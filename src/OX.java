@@ -28,7 +28,8 @@ public class OX {
 	private JTextField register_username;
 	private JPanel selectPic = new JPanel();
 	private String register_idPic = "";
-	public connectMongoDB con;;
+	public connectMongoDB con;
+	private String pathimg ="";
 	private JLabel btnpic1 = new JLabel("1");
 	JLabel btnpic2 = new JLabel("2");
 	JLabel btnpic3 = new JLabel("10");
@@ -62,6 +63,7 @@ public class OX {
 	public OX() {
 		initialize();
 	}
+	
 
 	/**
 	 * Initialize the contents of the frame.
@@ -97,6 +99,7 @@ public class OX {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				register_idPic = "/picplayer/1.png";
+				
 				btnpic1.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0),
 						new Color(0, 0, 0), new Color(0, 0, 0)));
 				btnpic2.setBorder(null);
@@ -135,6 +138,7 @@ public class OX {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				register_idPic = "/picplayer/2.png";
+				
 				btnpic2.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0),
 						new Color(0, 0, 0), new Color(0, 0, 0)));
 				btnpic1.setBorder(null);
@@ -388,7 +392,9 @@ public class OX {
 						JOptionPane.showMessageDialog(frame, "This user is not available.");
 					} else {
 						if (register_password.getText().equals(register_repassword.getText())) {
-							con.input(register_username.getText(), register_password.getText());
+							
+							con.input(register_username.getText(), register_password.getText(),"C:/Users/pop/Desktop/OXgame/OX_project-master/src/picplayer/1.png");
+							JOptionPane.showMessageDialog(frame, "Register success!!");
 						} else {
 							JOptionPane.showMessageDialog(frame, "password is incorrect.");
 						}
@@ -408,7 +414,18 @@ public class OX {
 		register.add(btnNewButton_1);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(26, 24, 61, 54);
+		lblNewLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Home home = new Home();
+				home.main(null);
+				frame.setVisible(false);
+				
+				
+			}
+		});
+		lblNewLabel.setBounds(27, 24, 61, 54);
 		lblNewLabel.setIcon(new ImageIcon(OX.class.getResource("/photo/home.png")));
 		register.add(lblNewLabel);
 

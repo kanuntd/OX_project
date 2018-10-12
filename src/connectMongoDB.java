@@ -26,13 +26,16 @@ public class connectMongoDB {
 		
 	}
 	
-	public void input(String user ,String password) {
+	public void input(String user ,String password,String StringPath) {
+		    Encode_decode img = new Encode_decode();
+		    String imgencode = img.encoder(StringPath); 
 	        BasicDBObject insertUser= new BasicDBObject();
 	        insertUser.put("user", user);
 	        insertUser.put("password", password);
-
+	        insertUser.put("picture",imgencode);
 	        collecttion = db.getCollection("User");
 	        collecttion.insert(insertUser);
+	        System.out.println("OK");
 
 	 }
 	public int QueryUser(String user) {
@@ -45,6 +48,7 @@ public class connectMongoDB {
         DBCursor cursor = collecttion.find(Query);
         while(cursor.hasNext()) {
               check=cursor.next().toString();
+              
         }
         if(check!=null) {
         	return 1;
