@@ -72,6 +72,7 @@ public class login extends JFrame {
 						 
 					     Lobby  lobby = new Lobby();
 					     lobby.main(null);
+					     
 					     setVisible(false);
 					} else {
 						

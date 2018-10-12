@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 public class Home {
 
 	private JFrame frame;
-
+     
 	/**
 	 * Launch the application.
 	 */
@@ -57,6 +57,7 @@ public class Home {
 			public void actionPerformed(ActionEvent e) {
 				OX ox = new OX();
 				ox.main(null);
+				
 				frame.setVisible(false);
 				
 			}

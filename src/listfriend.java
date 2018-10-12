@@ -44,5 +44,9 @@ public class listfriend extends JPanel {
 	 public void setlabel( ImageIcon m) {
 		   this.lblNewLabel.setIcon(m);
 		   
-	  }
+	  
+	 }
+	 public void setlabelUser(String txt) {
+		 this.lblNewLabel_1.setText(txt);
+	 }
 }

@@ -25,7 +25,7 @@ public class Lobby extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-
+	public connectMongoDB con;
 	/**
 	 * Launch the application.
 	 */
@@ -56,16 +56,18 @@ public class Lobby extends JFrame {
 		JPanel panellist = new JPanel();
 		panellist.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panellist.setBounds(466, 57, 350, 410);
-		
-
-		
 		JPanel gui = new JPanel(new BorderLayout(3,3));
         final JPanel panel = new JPanel(new GridLayout(0,1));
         final JScrollPane scroll = new JScrollPane(panel);
         scroll.setPreferredSize(new Dimension(350,400));
         gui.add(scroll, BorderLayout.CENTER);
-        
-                for(int i =0;i<4;i++) {
+                con =new connectMongoDB();
+                int count = con.QueryListfriend();
+                con = new connectMongoDB();
+			    
+                
+			    
+                for(int i =0;i<count;i++) {
                 int counter = 0;
                 ImageIcon image = new ImageIcon("C:\\Users\\pop\\Desktop\\OXgame\\OX_project-master\\src\\picplayer\\10.png");
                 Image images = image.getImage(); 
@@ -73,7 +75,9 @@ public class Lobby extends JFrame {
                 image = new ImageIcon(newimg);
               
                 listfriend s = new listfriend();
-                s.setlabel(image);      
+                s.setlabel(image); 
+                String user = con.QueryListfriendString();
+                s.setlabelUser(user);
                 panel.add(s.a);              
                 panel.revalidate();
                 int height = (int)panel.getPreferredSize().getHeight();
@@ -95,6 +99,8 @@ public class Lobby extends JFrame {
 		JButton btnScored = new JButton("Score");
 		btnScored.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
 			}
 		});
 		btnScored.setBounds(626, 492, 89, 23);

@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.text.Document;
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -47,8 +52,7 @@ public class connectMongoDB {
 	    collecttion = db.getCollection("User");
         DBCursor cursor = collecttion.find(Query);
         while(cursor.hasNext()) {
-              check=cursor.next().toString();
-              
+              check=cursor.next().toString();           
         }
         if(check!=null) {
         	return 1;
@@ -56,6 +60,28 @@ public class connectMongoDB {
         return 0;
 		
 	}
+	
+	public int QueryListfriend() {
+		 String check=null;
+		db = client.getDB(uri.getDatabase());
+		collecttion = db.getCollection("User");
+		int cursor = collecttion.find().count();
+	       return cursor;
+	}
+	public String QueryListfriendString() {
+		String  user=null;
+		
+		db = client.getDB(uri.getDatabase());
+		collecttion = db.getCollection("User");
+		 DBCursor cursor = collecttion.find();
+		
+		 while(cursor.hasNext()) {
+            user =cursor.next().get("user").toString() ; 
+            
+        }
+		return user;
+	}
+	
 	
 	
 }
